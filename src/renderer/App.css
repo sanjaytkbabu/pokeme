@@ -1,0 +1,199 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+/* body {
+  position: relative;
+  color: white;
+  height: 100vh;
+  background: linear-gradient(
+    200.96deg,
+    #fedc2a -29.09%,
+    #dd5789 51.77%,
+    #7a2c9e 129.35%
+  );
+  font-family: sans-serif;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  appearance: none;
+  font-size: 1.3rem;
+  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
+    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
+  transition: all ease-in 0.1s;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  height: fit-content;
+  width: fit-content;
+  margin: 10px;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.Hello {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+} */
+/* body {
+  /* position: relative;
+  color: white;
+  height: 100vh;
+  background: linear-gradient(
+    200.96deg,
+    #fedc2a -29.09%,
+    #dd5789 51.77%,
+    #7a2c9e 129.35%
+  ); */
+  /* font-family: roboto; */
+  /* overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+} */
+
+body {
+
+  font-family: roboto;
+  width: 100%;
+  height: 100%;
+  background-color: #0A1929;
+
+}
+
+text, p, label {
+  color: white;
+}
+
+/* #id_reminder {
+  font-size: 125%;
+} */
+
+.cls_title {
+  font-size: 125%;
+  display: inline;
+  padding-left: 1%;
+}
+
+.cls_switch {
+  float: right;
+  padding-right: 2%;
+}
+
+.cls_div_title {
+  width: 100%;
+  padding-top: 5%;
+ 
+}
+.cls_p {
+  padding: 1%;
+  color: white;
+}
+
+.cls_slider {
+  /* display: inline; */ 
+   /* width: 25em; */
+   /* margin-right: 2%; */
+   
+  /* padding: 2%; */
+  /* padding-top: 5%; */
+  /* vertical-align: middle; */
+  /* float: right; */
+  /* margin-right: 5%; */
+
+  /* border: 3px solid green; */
+  /* display: inline-block; */
+  /* width: 70%; */
+  /* vertical-align: middle; */
+  /* flex-grow: 9; */
+  /* align-self: flex-end; */
+  flex: 85%;
+  
+}
+* { margin: 0; padding: 0; }
+/* .slider-div {
+  width: 100%;
+  display: inline;
+  
+} */
+
+.cls_div_row {
+
+  /* width: 100%; */
+
+  /* line-height: 1px; */
+
+  /* margin: 1% 0; */
+  /* align-content: center; */
+  
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 1% 0;
+  padding-left: 1%;
+  padding-right: 4%;
+  
+}
+.cls_checkbox {
+  /* border: 2px solid blue; */
+  /* flex-grow: 1; */
+  /* align-self: flex-start; */
+  flex: 15%;
+}
+
+/* .container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+} */
+.cls_timer_div {
+  flex: 85%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+/* .cls_slider */
+.cls_timer_span {
+  flex: 15%;
+}
+.cls_timer {
+  font-size: medium;
+} 
+.cls_timer_label {
+  font-size: small;
+}
