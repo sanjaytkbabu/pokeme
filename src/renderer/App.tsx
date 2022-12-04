@@ -11,6 +11,10 @@ import '@fontsource/roboto/700.css';
 import Box from '@mui/joy/Box';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import React from 'react';
+import { bodypart } from 'main/bodypart';
+import {Howl, Howler} from 'howler';
+import path = require('path');
 
 // var x = 10;
 
@@ -53,13 +57,17 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 const label = "hello, hello2"
 
+
+
 function valuetext(value: number) {
-  return `${value}°C`;
+  //console.log(value)
+  return `${value}`;
+  
 }
 
-interface part {
-  text: string
-} 
+// interface part {
+//   text: string
+// } 
 
 function IntervalTime() {
   return (
@@ -81,53 +89,9 @@ function IntervalTime() {
 
 
 
-function DiscreteSlider(props: part) {
-  return (
-    // <Box sx={{ width: 300 }}>
-    <div className='cls_div_row'>
-      <span className='cls_checkbox'>
-    <label><BpCheckbox defaultChecked />{props.text}:</label>
-    </span>
-    <Box className='cls_slider'>
-      <IOSSlider
-        color="primary" 
-        aria-label="Minutes"
-        defaultValue={30}
-        getAriaValueText={valuetext}
-        valueLabelDisplay="off"
-        step={10}
-        marks
-        min={0}
-        max={60}
-        size='small'
-        disabled={false} 
-        
-        
-        
-      />
-      </Box>
-      </div>
- 
-  );
-}
 
-const Heading = () => {
-  return (
- <div>
-      <div className='cls_div_title'>
-    <p className='cls_title'>Reminders</p>
-    
-    <label className='cls_switch'> 
-    <IOSSwitch sx={{ m: 1 }} defaultChecked /></label>
-    </div>
-    <div className='cls_p'>Decide how often Pokeme should remind you to relax these:</div>
 
-   
-  
 
-    </div>
-  );
-};
 
 // const UI = () => {
 //   return (
@@ -148,16 +112,137 @@ const ui2 = () => {
 };
 
 
+
+const handleOnChange = (t:any) => {
+  // const updatedCheckedState = checkedState.map((item, index) =>
+  //   index === position ? !item : item
+  console.log(JSON.stringify(t));  
+  
+}
+
 export default function App() {
+  var sound = new Howl({
+    src: ['file:///../Users/sanjay/git/pokeme_workspace/pokeme/assets/chime.mp3'] 
+  });
+  
+  //sound.play();
+
+ // console.log("path>>>>>>" + path.resolve())
+
+  const [checkedState, setCheckedState] = React.useState(
+    new Array(bodypart.length).fill(false)
+  );
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  const [sliderValue, setSliderValue] = React.useState(
+    new Array(bodypart.length).fill(1)
+  );
+
+  const handleOnChangeSlider = (event: any, newValue: any) => {
+    setSliderValue(newValue);
+    console.log("slideval===" + newValue)
+  };  
+
+  function valuetext(value: number) {
+    //console.log(value)
+    return `${value}`;
+    
+  }
+
+  const Heading = () => {
+    return (
+   <div>
+    {/* <audio autoplay>
+    <source src="../../assets/chime.mp3" type="audio/mpeg" id="track"/>
+</audio> */}
+
+        <div className='cls_div_title'>
+      <p className='cls_title'>Reminders</p>
+      
+      <label className='cls_switch'> 
+      <IOSSwitch sx={{ m: 1 }} checked={isChecked} onClick={()=>handleOnChange()}/></label>
+      </div>
+      <div className='cls_p'>Decide how often Pokeme should remind you to relax these:</div>
+  
+     
+    
+  
+      </div>
+    );
+  };
+
+  function DiscreteSlider(props: any) {
+    return (
+      // <Box sx={{ width: 300 }}>
+      <div className='cls_div_row'>
+        <span className='cls_checkbox'>
+      <label><BpCheckbox checked={isChecked && checkedState[props.index]} onClick={()=>clicked(props.index)}/>{props.text}:</label>
+      </span>
+      <Box className='cls_slider'>
+        <IOSSlider
+          color="primary" 
+          aria-label="Minutes"
+          defaultValue={30}
+          getAriaValueText={valuetext}
+          valueLabelDisplay="off"
+          step={10}
+          marks
+          min={0}
+          max={60}
+          size='small'
+          disabled={!isChecked || !checkedState[props.index]}
+          // onChange={handleOnChangeSlider}
+          
+          
+          
+        />
+        </Box>
+        </div>
+   
+    );
+  }
+
+  // function clicked(e: any){
+  //   //const [checked, setChecked] = React.useState(false);
+  //   setCheckedState(!checkedState);
+  //   console.log("clicked>>>>>" + e);
+  
+  // }
+
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const clicked = (position: any) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setCheckedState(updatedCheckedState);
+  };
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={
           <div>
-          <Heading /> <IntervalTime /> <DiscreteSlider text="Eyes"/>
+          <Heading /> <IntervalTime /> 
+          
+          {bodypart.map(({name}, index)=> {
+
+            return (
+
+          // <DiscreteSlider text={name} onChange={() => handleOnChange(index)}/>
+          <DiscreteSlider text={name} index={index}/>
+            );
+
+          })
+          }
+          
+          {/* <DiscreteSlider text="Eyes"/>
           <DiscreteSlider text="Fingers"/> <DiscreteSlider text="Arms"/> <DiscreteSlider text="Legs"/>
           <DiscreteSlider text="Neck"/> <DiscreteSlider text="Water"/> <DiscreteSlider text="Posture"/>
-          <DiscreteSlider text="Breath"/>
+          <DiscreteSlider text="Breath"/> */}
         </div>
         } />
       </Routes>
