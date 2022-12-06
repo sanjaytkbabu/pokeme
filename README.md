@@ -1,5 +1,3 @@
-### Electron version of badger
-
 #### Powered by Electron, TS and React
 
 #### A way to remind yourself to take breaks during work day
@@ -8,4 +6,4 @@ npm i\
 npm run start 
 
 
-![alt text](https://github.com/sanjaytkbabu/nagger/blob/main/res/pokeme.jpg)
+![alt text](https://github.com/sanjaytkbabu/nagger/blob/main/res/pokeme.png)
