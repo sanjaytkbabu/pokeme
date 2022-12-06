@@ -6,4 +6,4 @@ npm i\
 npm run start 
 
 
-![Screenshot](https://github.com/sanjaytkbabu/nagger/blob/main/res/pokeme.png)
+![Screenshot](https://github.com/sanjaytkbabu/nagger/blob/res/pokeme.png)
