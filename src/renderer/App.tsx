@@ -1,5 +1,4 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
 import './App.css';
 import Switch, { SwitchProps } from '@mui/material/Switch';
 import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
@@ -10,68 +9,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Box from '@mui/joy/Box';
 import { styled } from '@mui/material/styles';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import React from 'react';
 import { bodypart } from 'main/bodypart';
 import {Howl, Howler} from 'howler';
-import path = require('path');
 
-// var x = 10;
-
-// const Hello = () => {
-//   return (
-//     <div>
-//       <div className="Hello">
-//         <img width="200" alt="icon" src={icon} />
-//       </div>
-//       <h1>pokeme</h1>
-//       <div className="Hello">
-//         <a
-//           href="https://electron-react-boilerplate.js.org/"
-//           target="_blank"
-//           rel="noreferrer"
-//         >
-//           <button type="button">
-//             <span role="img" aria-label="books">
-//               📚
-//             </span>
-//             Read our docs
-//           </button>
-//         </a>
-//         <a
-//           href="https://github.com/sponsors/electron-react-boilerplate"
-//           target="_blank"
-//           rel="noreferrer"
-//         >
-//           <button type="button">
-//             <span role="img" aria-label="books">
-//               🙏
-//             </span>
-//             Donate
-//           </button>
-//         </a>
-//       </div>
-//     </div>
-//   );
-// };
-
-const label = "hello, hello2"
-
-
-
-function valuetext(value: number) {
-  //console.log(value)
-  return `${value}`;
-  
-}
-
-// interface part {
-//   text: string
-// } 
 
 function IntervalTime() {
   return (
-    // <Box sx={{ width: 300 }}>
    
     <div className='cls_div_row'>
     <span className='cls_timer_span'></span>  
@@ -86,48 +30,13 @@ function IntervalTime() {
   );
 }
 
-
-
-
-
-
-
-
-// const UI = () => {
-//   return (
-//   //  heading();
-//     DiscreteSlider()
-    
-
-
-
-
-//   );
-// };
-
-const ui2 = () => {
-  return (
-    <h3>Yo</h3>
-  );
-};
-
-
-
-const handleOnChange = (t:any) => {
-  // const updatedCheckedState = checkedState.map((item, index) =>
-  //   index === position ? !item : item
-  console.log(JSON.stringify(t));  
-  
-}
-
 export default function App() {
+  
   var sound = new Howl({
     src: ['file:///../Users/sanjay/git/pokeme_workspace/pokeme/assets/chime.mp3'] 
   });
   
   //sound.play();
-
- // console.log("path>>>>>>" + path.resolve())
 
   const [checkedState, setCheckedState] = React.useState(
     new Array(bodypart.length).fill(false)
@@ -144,7 +53,6 @@ export default function App() {
   };  
 
   function valuetext(value: number) {
-    //console.log(value)
     return `${value}`;
     
   }
@@ -152,9 +60,6 @@ export default function App() {
   const Heading = () => {
     return (
    <div>
-    {/* <audio autoplay>
-    <source src="../../assets/chime.mp3" type="audio/mpeg" id="track"/>
-</audio> */}
 
         <div className='cls_div_title'>
       <p className='cls_title'>Reminders</p>
@@ -163,9 +68,6 @@ export default function App() {
       <IOSSwitch sx={{ m: 1 }} checked={isChecked} onClick={()=>handleOnChange()}/></label>
       </div>
       <div className='cls_p'>Decide how often Pokeme should remind you to relax these:</div>
-  
-     
-    
   
       </div>
     );
@@ -191,9 +93,6 @@ export default function App() {
           max={60}
           size='small'
           disabled={!isChecked || !checkedState[props.index]}
-          // onChange={handleOnChangeSlider}
-          
-          
           
         />
         </Box>
@@ -202,15 +101,10 @@ export default function App() {
     );
   }
 
-  // function clicked(e: any){
-  //   //const [checked, setChecked] = React.useState(false);
-  //   setCheckedState(!checkedState);
-  //   console.log("clicked>>>>>" + e);
-  
-  // }
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
+    sound.play();
   };
 
   const clicked = (position: any) => {
@@ -238,11 +132,6 @@ export default function App() {
 
           })
           }
-          
-          {/* <DiscreteSlider text="Eyes"/>
-          <DiscreteSlider text="Fingers"/> <DiscreteSlider text="Arms"/> <DiscreteSlider text="Legs"/>
-          <DiscreteSlider text="Neck"/> <DiscreteSlider text="Water"/> <DiscreteSlider text="Posture"/>
-          <DiscreteSlider text="Breath"/> */}
         </div>
         } />
       </Routes>
